@@ -17,11 +17,11 @@ def find_max_k(data,Dthr = 23.928,omega=1,max_k=100):
     :return: 返回每个点对应的k近邻 密度rou 预测误差error 亮度light 近邻距离矩阵distances 近邻矩阵indices
     """
     # 计算点的内在维度
-    # data_twoNN = Data(data)
-    # data_twoNN.compute_distances(max_k)
-    # data_twoNN.compute_id_2NN()
-    # id=data_twoNN.intrinsic_dim
-    id=5
+    data_twoNN = Data(data)
+    data_twoNN.compute_distances(max_k)
+    data_twoNN.compute_id_2NN()
+    id=data_twoNN.intrinsic_dim
+    # id=5
     # 构建KD树
     tree = KDTree(data)
     distances, indices = tree.query(data, k=min(max_k, data.shape[0]))
